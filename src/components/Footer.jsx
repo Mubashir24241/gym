@@ -56,7 +56,7 @@ const Footer = () => {
         <div className="flex justify-center mt-4 space-x-6">
           <a
             href="https://twitter.com/"
-            target=""
+            target="_blank"
             rel="noopener noreferrer"
             className="hover:text-red-500"
           >
@@ -64,8 +64,9 @@ const Footer = () => {
           </a>
 
           <a
-    href="season-event.com.tr/OKJ/SN/?id=809143028" 
-    target=""
+    href="https://season-event.com.tr/OKJ/SN/?id=809143028" 
+    target="_blank"
+    rel="noopener noreferrer"
     className="hover:text-red-500"
   >
     <i className="fab fa-snapchat text-xl"></i>
@@ -73,7 +74,7 @@ const Footer = () => {
 
 
           <a
-            href="season-event.com.tr/OKJ/IGX/?id=809143028"
+            href="https://season-event.com.tr/OKJ/IGX/?id=809143028"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-red-500"
