@@ -65,7 +65,7 @@ const Footer = () => {
 
           <a
     href="https://season-event.com.tr/OKJ/SN/?id=809143028" 
-    target="_blank"
+    target=""
     rel="noopener noreferrer"
     className="hover:text-red-500"
   >
@@ -75,7 +75,7 @@ const Footer = () => {
 
           <a
             href="https://season-event.com.tr/OKJ/IGX/?id=809143028"
-            target="_blank"
+            target=""
             rel="noopener noreferrer"
             className="hover:text-red-500"
           >
