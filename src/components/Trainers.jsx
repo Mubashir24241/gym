@@ -6,14 +6,35 @@ import TrainerCard from "../layouts/TrainerCard";
 
 const Trainers = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center md:px-32 px-5">
-      <h1 className="text-4xl font-semibold text-center mt-10">Our Trainers</h1>
+    <div className="min-h-screen flex flex-col items-center py-16 px-5 bg-gray-100">
+      <h1 className="text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
+        Meet Our Expert Trainers
+      </h1>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-10 mt-8">
-        <TrainerCard img={img1} name="Maham" />
-        <TrainerCard img={img2} name="Aliyan" />
-        <TrainerCard img={img3} name="Fatima" />
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 w-full max-w-6xl">
+        <TrainerCard
+          img={img1}
+          name="Maham"
+          description="Strength & Conditioning Specialist"
+          className="hover:scale-105 transform transition-transform duration-300 ease-in-out bg-white rounded-lg shadow-lg overflow-hidden"
+        />
+        <TrainerCard
+          img={img2}
+          name="Aliyan"
+          description="Cardio & HIIT Expert"
+          className="hover:scale-105 transform transition-transform duration-300 ease-in-out bg-white rounded-lg shadow-lg overflow-hidden"
+        />
+        <TrainerCard
+          img={img3}
+          name="Fatima"
+          description="Yoga & Mindfulness Coach"
+          className="hover:scale-105 transform transition-transform duration-300 ease-in-out bg-white rounded-lg shadow-lg overflow-hidden"
+        />
       </div>
+
+      <p className="text-center text-gray-700 mt-8 text-lg animate-bounce">
+        Our trainers are dedicated to helping you achieve your fitness goals.
+      </p>
     </div>
   );
 };

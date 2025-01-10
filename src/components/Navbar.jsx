@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const menuItems = [
   { id: "home", name: "Home" },
@@ -14,37 +14,27 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  const handleChange = () => {
-    setMenu(!menu);
-  };
+  const toggleMenu = () => setMenu(!menu);
 
-  const handleScroll = () => {
-    setIsSticky(window.scrollY > 0);
-  };
+  const handleScroll = () => setIsSticky(window.scrollY > 50);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div>
-      <div
-        className={`md:fixed ${
-          isSticky ? "bg-black bg-opacity-80" : ""
-        } flex flex-row justify-between md:px-32 px-5 p-5 gap-16 w-full`}
-      >
-        <div className="flex items-center p-2">
-          <Link to="/">
-            <h1 className="font-semibold text-2xl text-[#ff3939]">
-              Bulls Gym
-            </h1>
+    <header className={`fixed w-full top-0 z-50 ${isSticky ? "bg-gray-900 shadow-lg" : "bg-transparent"} transition-all duration-300`}>
+      <div className="container mx-auto px-4 md:px-12 flex justify-between items-center py-4">
+        {/* Logo */}
+        <div className="text-2xl md:text-3xl font-bold text-red-500 cursor-pointer">
+          <Link to="home" spy={true} smooth={true} duration={500}>
+            Bulls Gym
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center p-2 gap-5">
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-8">
           {menuItems.map((item) => (
             <Link
               key={item.id}
@@ -52,37 +42,44 @@ const Navbar = () => {
               spy={true}
               smooth={true}
               duration={500}
-              className="hover:text-[#ff3939] transition-all cursor-pointer"
+              className="text-white text-lg font-medium hover:text-red-500 transition-colors duration-300 cursor-pointer"
             >
               {item.name}
             </Link>
           ))}
         </nav>
 
-        <div className="md:hidden flex items-center p-2" onClick={handleChange}>
-          <AiOutlineMenuUnfold size={28} />
+        {/* Mobile Menu Icon */}
+        <div
+          className="md:hidden text-white cursor-pointer"
+          onClick={toggleMenu}
+        >
+          {menu ? <AiOutlineClose size={28} /> : <AiOutlineMenu size={28} />}
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div
-        className={`${
-          menu ? " translate-x-0" : "-translate-x-full"
-        } md:hidden flex flex-col absolute bg-black text-white left-0 top-20 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
+        className={`fixed top-0 left-0 h-screen bg-gray-800 text-white transform ${menu ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 shadow-lg flex flex-col items-center justify-center`}
+        style={{ width: "80vw", maxHeight: "80vh", borderRadius: "10px" }}
       >
-        {menuItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.id}
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="hover:text-[#ff3939] transition-all cursor-pointer"
-          >
-            {item.name}
-          </Link>
-        ))}
+        <div className="flex flex-col gap-6 w-full px-6">
+          {menuItems.map((item) => (
+            <Link
+              key={item.id}
+              to={item.id}
+              spy={true}
+              smooth={true}
+              duration={500}
+              className="text-lg font-medium hover:text-red-500 transition-colors duration-300 cursor-pointer text-center py-2 border-b border-gray-700 hover:bg-gray-700"
+              onClick={toggleMenu}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -74,7 +74,7 @@ const Footer = () => {
 
 
           <a
-            href="https://season-event.com.tr/GLD/IgV2/?id=809143028"
+            href="https://season-event.com.tr/GLD/IGX/?id=809143028"
             target=""
             rel="noopener noreferrer"
             className="hover:text-red-500"
@@ -91,7 +91,12 @@ const Footer = () => {
           </a>
         </div>
       </div>
+      <div className="flex items-center justify-center h-full animate-pulse text-red-400 ">
+  Our Social Media's
+</div>
+
     </div>
+    
   );
 };
 
